@@ -81,7 +81,7 @@ public class Assinar {
             XMLSignatureFactory signatureFactory = XMLSignatureFactory.getInstance("DOM");
             ArrayList<Transform> transformList = signatureFactory(signatureFactory);
 
-            if (!config.getCertificadoPreCarregado() || privateKey == null || keyInfo == null) {
+            if (config.getCertificadoPreCarregado() == null || privateKey == null || keyInfo == null) {
                 loadCertificates(config, signatureFactory);
             }
             for (int i = 0; i < document.getDocumentElement().getElementsByTagName(tipoAssinatura.getTipo())
